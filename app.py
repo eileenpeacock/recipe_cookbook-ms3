@@ -11,13 +11,19 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'recipeDB'
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
+
 mongo = PyMongo(app)
 
+# #Set homepage
+# @app.route('/')
+# @app.route('/index')
+# def index():
+#     return render_template("index.html")
 
-@app.route('/')
-def hello():
-    return 'Hello World ...testing'
-
+#Get Recipes
+@app.route('/get_recipes')
+def get_recipes():
+    return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
 #Global settings
 # if __name__ == '__main__':      

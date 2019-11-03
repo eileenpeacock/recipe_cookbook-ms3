@@ -5,3 +5,7 @@
 __pycache__
 venv/
 env/
+.bashrc
+launch.sh
+.DS_Store
+env.py
