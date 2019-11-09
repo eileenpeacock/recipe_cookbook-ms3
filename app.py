@@ -28,9 +28,16 @@ def get_recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
 #Add Recipes
-@app.route('/add_recipes')
-def add_recipes():
+@app.route('/add_recipe')
+def add_recipe():
     return render_template("addrecipe.html")
+
+#Submit Recipe
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+    recipes=mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('get_recipes'))
 
 #Global settings
 # if __name__ == '__main__':      

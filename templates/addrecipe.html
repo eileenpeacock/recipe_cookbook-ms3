@@ -1,5 +1,99 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3>Add Recipe</h3>
+
+<h3>Add Recipe</h3>
+
+<!-- Add recipe form -->
+
+<div class="row">
+    <form action="{{ url_for('insert_recipe')}}" method="POST" class="col s12">
+        <div class="row">
+
+            <!-- Recipe Title -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">fastfood</i>
+                    <input id="recipe_title" name="title" type="text" class="validate" >
+                    <label for="icon_prefix">Recipe Title</label>
+                </div>
+            </div>
+            <!-- Recipe Description -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">fastfood</i>
+                    <textarea id="recipe_description" name="description" type="textarea" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix">Description</label>
+                </div>
+            </div>
+            
+            <!-- Recipe Ingredients -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">fastfood</i>
+                    <textarea id="recipe_ingredients" name="ingredients" type="textarea" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix">Ingredients</label>
+                </div>
+            </div>
+
+            <!-- Recipe Instructions -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">fastfood</i>
+                    <textarea id="recipe_instructions" name="instructions type="textarea" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix">Preparation Instructions</label>
+                </div>
+            </div>
+
+            <!-- Type of meal -->
+            <div class="row">
+                <div class="input-field col s12 m6 l3">
+                    <select id="meal_type" >
+                        <option value="" disabled selected>Choose the Type of Meal</option>
+                        <option value="1">Breakfast</option>
+                        <option value="2">Main</option>
+                        <option value="3">Dessert</option>
+                        <option value="3">Snack</option>
+                    </select>
+                    <label>Type of Meal</label>
+                </div>
+
+                <!-- Recipe difficulty -->
+                <div class="input-field col s12 m6 l3">
+                    <select class="icons">
+                        <option value="" disabled selected>Choose the recipe difficulty</option>
+                        <option value="" data-icon="#" class="left circle">Easy</option>
+                        <option value="" data-icon="#" class="left circle">Medium</option>
+                        <option value="" data-icon="#" class="left circle">Hard</option>
+                    </select>
+                    <label>Difficulty</label>
+                </div>
+                <!-- Allergen items -->
+                <div class="input-field col s12 m6 l3">
+                    <select name="allergen" id="allergen"  multiple>
+                        <option value="" disabled selected>Choose the allergens not in this recipe</option>
+                        <option name="allergen" value="crustacean" data-icon="#" class="left">Crustacean</option>
+                        <option name="allergen" value="eggs" data-icon="#" class="left">Eggs & egg products</option>
+                        <option name="allergen" value="fish" data-icon="#" class="left">Fish</option>
+                        <option name="allergen" value="gluten" data-icon="#" class="left">Gluten/Wheat</option>
+                        <option name="allergen" value="dairy" data-icon="#" class="left">Milk & Dairy products</option>
+                        <option name="allergen" value="nuts" data-icon="#" class="left">Nuts (Tree Nuts)</option>
+                        <option name="allergen" value="peanuts" data-icon="#" class="left">Peanuts</option>
+                        <option name="allergen" value="soy" data-icon="#" class="left">Soy</option>                    
+                    </select>
+                    <label for="allergen">Excludes the following allergens</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe<i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+
  
 {% endblock %}
