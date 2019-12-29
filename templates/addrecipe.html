@@ -13,15 +13,15 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">fastfood</i>
-                    <input id="recipe_title" name="title" type="text" class="validate" >
+                    <input id="recipe_title" required name="title" type="text" class="validate" >
                     <label for="icon_prefix">Recipe Title</label>
                 </div>
             </div>
             <!-- Recipe Description -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">fastfood</i>
-                    <textarea id="recipe_description" name="description" type="textarea" class="materialize-textarea"></textarea>
+                    <i class="material-icons prefix">assignment</i>
+                    <textarea id="recipe_description" required name="description" type="textarea" class="materialize-textarea"></textarea>
                     <label for="icon_prefix">Description</label>
                 </div>
             </div>
@@ -29,8 +29,8 @@
             <!-- Recipe Ingredients -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">fastfood</i>
-                    <textarea id="recipe_ingredients" name="ingredients" type="textarea" class="materialize-textarea"></textarea>
+                    <i class="material-icons prefix">format_list_numbered</i>
+                    <textarea id="recipe_ingredients" required name="ingredients" type="textarea" class="materialize-textarea"></textarea>
                     <label for="icon_prefix">Ingredients</label>
                 </div>
             </div>
@@ -38,16 +38,16 @@
             <!-- Recipe Instructions -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">fastfood</i>
-                    <textarea id="recipe_instructions" name="instructions type="textarea" class="materialize-textarea"></textarea>
+                    <i class="material-icons prefix">format_list_numbered</i>
+                    <textarea id="recipe_instructions" required name="instructions" type="textarea" class="materialize-textarea"></textarea>
                     <label for="icon_prefix">Preparation Instructions</label>
                 </div>
             </div>
 
             <!-- Type of meal -->
             <div class="row">
-                <div class="input-field col s12 m6 l3">
-                    <select id="meal_type" >
+                <div class="input-field col s12 m6 ">
+                    <select id="meal_type" required name="meal_type">
                         <option value="" disabled selected>Choose the Type of Meal</option>
                         <option value="1">Breakfast</option>
                         <option value="2">Main</option>
@@ -58,7 +58,7 @@
                 </div>
 
                 <!-- Recipe difficulty -->
-                <div class="input-field col s12 m6 l3">
+                <div class="input-field col s12 m6 ">
                     <select class="icons">
                         <option value="" disabled selected>Choose the recipe difficulty</option>
                         <option value="" data-icon="#" class="left circle">Easy</option>
@@ -68,19 +68,36 @@
                     <label>Difficulty</label>
                 </div>
                 <!-- Allergen items -->
-                <div class="input-field col s12 m6 l3">
+                <div class="input-field col s12 m6 ">
                     <select name="allergen" id="allergen"  multiple>
-                        <option value="" disabled selected>Choose the allergens not in this recipe</option>
-                        <option name="allergen" value="crustacean" data-icon="#" class="left">Crustacean</option>
-                        <option name="allergen" value="eggs" data-icon="#" class="left">Eggs & egg products</option>
-                        <option name="allergen" value="fish" data-icon="#" class="left">Fish</option>
-                        <option name="allergen" value="gluten" data-icon="#" class="left">Gluten/Wheat</option>
-                        <option name="allergen" value="dairy" data-icon="#" class="left">Milk & Dairy products</option>
-                        <option name="allergen" value="nuts" data-icon="#" class="left">Nuts (Tree Nuts)</option>
-                        <option name="allergen" value="peanuts" data-icon="#" class="left">Peanuts</option>
-                        <option name="allergen" value="soy" data-icon="#" class="left">Soy</option>                    
+                        <option value="" disabled selected>Choose the allergens in this recipe</option>
+                        {% for allergen in allergen %}
+                        <option value="{{allergen.allergens}}">{{allergen.allergens}}</option>
+                        {% endfor %}                    
                     </select>
-                    <label for="allergen">Excludes the following allergens</label>
+                    <label for="allergen">Includes the following allergens</label>
+                </div>
+                <!-- Type of Cuisine -->
+                <div class="input-field col s12 m6 ">
+                    <select name="cuisine_name" id="cuisine">
+                        <option value="" disabled selected>Choose a Cuisine </option>
+                        {% for cuisine in cuisine %}
+                        <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
+                        {% endfor %}                 
+                    </select>
+                    <label for="cuisine">Type of Cuisine</label>
+                </div>
+                <!-- Number of servings -->
+                <div class="row">
+                    <div class="input-field col s12 m6 ">
+                        <select name="servings" id="servings">
+                            <option value="" disabled selected>Choose the number of portions </option>
+                            {% for servings in servings %}
+                            <option value="{{servings.servings}}">{{servings.servings}}</option>
+                            {% endfor %} 
+                        </select>
+                        <label for="servings">Number of servings</label>
+                    </div>
                 </div>
             </div>
         </div>

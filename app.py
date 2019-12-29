@@ -30,7 +30,10 @@ def get_recipes():
 #Add Recipes
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template("addrecipe.html")
+    return render_template("addrecipe.html", 
+                                cuisine=mongo.db.cuisine.find(),
+                                allergen=mongo.db.allergen.find(),
+                                servings=mongo.db.servings.find(),)
 
 #Submit Recipe
 @app.route('/insert_recipe', methods=['POST'])
